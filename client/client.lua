@@ -1,3 +1,4 @@
+-- 1. Disable those achievments from online rdr2 from appearing when you join the game
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0) 	
@@ -12,3 +13,4 @@ Citizen.CreateThread(function()
         end
     end
 end)
+------------------------------------------------------------------------------------------
