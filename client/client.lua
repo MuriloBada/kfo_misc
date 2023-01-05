@@ -45,3 +45,32 @@ AddEventHandler('playerSpawned', function()
     end)
 end)
 ------------------------------------------------------------------------------------------
+
+-- 4. Bell sounds every hour
+Citizen.CreateThread(function()
+    local sleep = true
+    while true do
+        Citizen.Wait(0)
+        local hora = GetClockHours()
+        local minutos = GetClockMinutes()
+        if hora >= 0 and minutos >= 1 and minutos <= 5 then
+            sleep = false
+            local soundSet , streamName = "VAL_SINGLE_TOLL", "CHURCH_BELL_SOUNDS"
+            local timeout = 0
+            while not LoadStream(soundSet , streamName) do
+                Wait(1)
+                timeout = timeout + 1
+                if timeout > 200 then
+                    break
+                end
+            end
+            Citizen.Wait(0)
+            local streamedmusic = Citizen.InvokeNative(0x0556C784FA056628, soundSet, streamName)
+            PlayStreamFromPosition(-230.1,797.9,134.6, streamedmusic) -- valentine
+        end
+        if sleep then
+            Citizen.Wait(2000)
+        end
+    end
+end)
+------------------------------------------------------------------------------------------
