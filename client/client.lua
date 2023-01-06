@@ -47,3 +47,18 @@ AddEventHandler('playerSpawned', function()
     end)
 end)
 ------------------------------------------------------------------------------------------
+
+-- 4. Minimap type
+-- 3 = Compass 0 = Off
+Citizen.CreateThread(function()
+    while true do
+        TriggerServerEvent('kfo_misc:checkCompass')
+        Citizen.Wait(500)
+    end
+end)
+------------------------------------------------------------------------------------------
+
+RegisterNetEvent('kfo_misc:setMinimap')
+AddEventHandler('kfo_misc:setMinimap', function(minimapType)
+    SetMinimapType(minimapType)
+end)
