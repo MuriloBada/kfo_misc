@@ -62,3 +62,9 @@ RegisterNetEvent('kfo_misc:setMinimap')
 AddEventHandler('kfo_misc:setMinimap', function(minimapType)
     SetMinimapType(minimapType)
 end)
+
+AddEventHandler('onResourceStart', function(resource)
+    if resource == 'redemrp_inventory' then
+        TriggerServerEvent('kfo_misc:handleInventory')
+    end
+end)
