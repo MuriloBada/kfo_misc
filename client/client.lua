@@ -65,6 +65,7 @@ end)
 
 AddEventHandler('onResourceStart', function(resource)
     if resource == 'redemrp_inventory' then
+        Wait(1000)
         TriggerServerEvent('kfo_misc:handleInventory')
     end
 end)
